@@ -21,6 +21,7 @@ var showCurrentTime = function() {
 	var minutes = now.getMinutes();
 	var seconds = now.getSeconds();
 	var meridiem = "AM"
+	var showHours = hours;
 	
 	if (hours >= 12) {
 		meridiem = "PM";
