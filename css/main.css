@@ -116,23 +116,23 @@ body {
 	display: flex;
 	flex-flow: row wrap;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-end;
 	height: 100vh;
-	background: url('../img/bears.jpg') #222;
-	background-size: cover;
+	background: url('../img/unicorn.png') no-repeat #ffd4ee;
+	background-position: 10%;
 	
 }
 
 .page-wrapper {
 	display: flex;
 	flex-flow: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	text-align: center;
-	/*background-color: rgba(200,200,200,0.7);*/
-    background: radial-gradient(#ffd4ee 30%, transparent);
-	width: 550px;
-	height: 550px;
+	background: radial-gradient(#fff,#ffd4ee 50%, transparent);
+   
+	
+	width: 650px;
 	padding: 5vw;
 	border-radius: 50%;
 }
