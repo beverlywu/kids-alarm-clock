@@ -7,9 +7,11 @@ var alarmMeridiem;
 //var currentHour = new Date().getHours();
 //var currentMinute = new Date().getMinutes();
 var time;
-var sound = new Audio("music.mp3");
+//var sound = new Audio("music.mp3");
+var sound = document.getElementById("alarmSound");
 var alarmRinging = false;
 var isAlarmStopped = false;
+var isAlarmSet = false;
 
 
 /******** DISPLAY CURRENT TIME *********/
@@ -59,8 +61,9 @@ document.getElementById("setAlarmName").addEventListener("change", getName);
 
 function getTime() {
 	
-	var hour24;
+	
 	var hour = document.getElementById("selectHour").value;
+	var hour24 = hour;
 	var minute = document.getElementById("selectMinute").value;
 	var meridiem = document.getElementById("selectMeridiem").value;
 
@@ -79,7 +82,7 @@ function getTime() {
 	alarmTime = hour + " : " + minute;
 	alarmTime24 = hour24 + ":" + minute;
 	alarmMeridiem = meridiem;
-	console.log("alarmTime: " + alarmTime24 + " " + meridiem);
+	console.log("alarmTime24: " + alarmTime24);
 }
 
 document.getElementById("selectHour").addEventListener("change", getTime);
@@ -90,6 +93,11 @@ document.getElementById("selectMeridiem").addEventListener("change", getTime);
 
 function setTime() {
 	document.getElementById("alarmTime").innerText = alarmTime + " " + alarmMeridiem;
+	sound.src = "magic.mp3";
+	sound.play();
+	sound.loop = false;	
+	isAlarmSet = true;
+	isAlarmStopped = false;
 }
 document.getElementById("setAlarmButton").addEventListener("click", setTime);
 
@@ -103,23 +111,28 @@ function stopAlarm() {
 } 
 document.getElementById("stopAlarmButton").addEventListener("click", stopAlarm);
 
+
 /********** RING ALARM @ SCHEDULED TIME *************/
 
 function ringAlarm() {
-	if (alarmTime24 == time && isAlarmStopped == false) {
+	
+	if (alarmTime24 == time && !isAlarmStopped && !alarmRinging) {
+		sound.src='music.mp3';
 		sound.play();
 		sound.loop = true;
 		alarmRinging = true;
 	}
 }
 
-ringAlarm();
+
+//ringAlarm();
 setInterval(ringAlarm, 1000);
+
 
 /********** DISPLAY GIF IF ALARM RINGING *************/
 
 function displayGIF() {
-	if (alarmRinging == true) {
+	if (alarmRinging) {
 		var alarmGIF = document.getElementById("alarmGIF");
 		alarmGIF.src = "https://media.giphy.com/media/3ohze456U9AIzUbex2/giphy.gif";
 	}
@@ -137,5 +150,8 @@ function stopAlarm() {
 document.getElementById("stopAlarmButton").addEventListener("click", stopAlarm);
 
 
-/********** COUNTDOWN *************/
-
+/*.then(function(res) {
+			console.log('worked!!', res);
+		}).catch(function(res) {
+			console.log('failed!!', res);
+		});*/
