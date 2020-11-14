@@ -203,11 +203,20 @@ header h2 {
 	width: 100px;
 	border-radius: 25px;
     background-image: linear-gradient(to right, #ffabab, #ffcdab, #fffbab, #c0ffab, #abe2ff, #bdabff, #ffabfb);
-    box-shadow: 0 0 15px 5px rgba(0,0,0,0.2);
 	margin-left: 20px;
 	font-family: sans-serif;
 	color: #222;
-	/*#ed18d4, #09b8ed*/
+	outline: none;
+}
+
+.circle-button:hover {
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.2);
+	
+}
+
+.circle-button:active {
+	transform: translateY(2px);
+	
 }
 
 
