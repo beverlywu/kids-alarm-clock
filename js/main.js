@@ -146,6 +146,9 @@ setInterval(displayGIF, 1000);
 function stopAlarm() { 
 	sound.pause(); 
 	isAlarmStopped = true;
+	alarmRinging = false;
+	var alarmGIF = document.getElementById("alarmGIF");
+	alarmGIF.src = "";
 } 
 document.getElementById("stopAlarmButton").addEventListener("click", stopAlarm);
 
